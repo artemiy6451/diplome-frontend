@@ -1,0 +1,9 @@
+html, body, div {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --light-blue-color: #BFDEFF;
+  --gray: #F5F7FA;
+}
