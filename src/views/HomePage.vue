@@ -3,8 +3,13 @@
     class="header-component"
   />
   <div class="content">
-    <HomePageLeftSideComponent />
-    <HomePageCenterComponent />
+    <HomePageLeftSideComponent
+      v-model:time="inputTime"
+    />
+    <HomePageCenterComponent
+        v-model="inputTime"
+        @update:time="handleTime"
+    />
     <HomePageRightComponent />
   </div>
 </template>
@@ -14,6 +19,13 @@ import HeaderComponent from '../components/HeaderComponent.vue'
 import HomePageLeftSideComponent from "../components/HomePageLeftSideComponent.vue"
 import HomePageCenterComponent from "../components/HomePageCenterComponent.vue"
 import HomePageRightComponent from "../components/HomePageRightComponent.vue"
+import {ref} from "vue"
+
+const inputTime = ref(0)
+
+function handleTime(time: number) {
+ inputTime.value += time
+}
 
 </script>
 

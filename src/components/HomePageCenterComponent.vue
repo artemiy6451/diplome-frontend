@@ -3,27 +3,16 @@
     <el-text class="center__text" size="large">Выберите нужное время</el-text>
     <div class="center__buttons">
       <div class="center__buttons-firstline">
-        <el-button type='primary'>5 мин.</el-button>
-        <el-button type='primary'>15 мин.</el-button>
-        <el-button type='primary'>30 мин.</el-button>
-        <el-button type='primary'>45 мин.</el-button>
+        <el-button type='primary' :model-value="time" @click="handleClick(5)">5 мин.</el-button>
+        <el-button type='primary' @click="handleClick(15)">15 мин.</el-button>
+        <el-button type='primary' @click="handleClick(30)">30 мин.</el-button>
+        <el-button type='primary' @click="handleClick(45)">45 мин.</el-button>
       </div>
       <div class="center__buttons-secondline">
-        <el-button type='primary'>1ч.</el-button>
-        <el-button type='primary'>2ч.</el-button>
-        <el-button type='primary'>3ч.</el-button>
-        <el-button type='primary'>5ч.</el-button>
-      </div>
-      <div class="center__time-picker">
-        <el-time-picker
-          @update:customTime="onInput"
-          :model-value="modelValue"
-          size="large"
-          arrow-control
-        />
-      </div>
-      <div class="center__confirm-button__wrapper">
-        <el-button class="center__confirm-button" size="large" color="#7158FF">Принять</el-button>
+        <el-button type='primary' @click="handleClick(60)">1ч.</el-button>
+        <el-button type='primary' @click="handleClick(120)">2ч.</el-button>
+        <el-button type='primary' @click="handleClick(180)">3ч.</el-button>
+        <el-button type='primary' @click="handleClick(300)">5ч.</el-button>
       </div>
     </div>
   </div>
@@ -32,16 +21,20 @@
 <script setup lang="ts">
 
 const props = defineProps({
-  modelValue: {
-    type: Date,
-    default: new Date(0,0,0,0,0)
+  time: {
+    type: Number,
+    default: 0
   }
 });
 
-const emit = defineEmits([ "update:modelValue" ]);
+const emit = defineEmits([ "update:modelValue", "update:time" ]);
 
 function onInput(value) {
   emit('update:modelValue', value)
+}
+
+function handleClick(time: number) {
+  emit('update:time', time)
 }
 
 </script>

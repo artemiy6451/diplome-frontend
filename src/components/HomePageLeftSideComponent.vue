@@ -9,11 +9,12 @@
       <TotalTime
         class="total-time"
         label="Время"
+        :time=time
       />
     </div>
     <div class="button__wrapper">
-      <el-button type="danger" size='large'>Отменить</el-button>
-      <el-button type="success" size='large'>Подтвердить</el-button>
+      <el-button type="danger" size='large' @click="cancel()">Отменить</el-button>
+      <el-button type="success" size='large' @click="addTime()">Подтвердить</el-button>
     </div>
   </div>
 </template>
@@ -21,9 +22,26 @@
 <script setup lang="ts">
 import CustomInput from '../components/UI/CustomInput.vue'
 import TotalTime from '../components/UI/TotalTime.vue'
-import { ref } from 'vue'
+import userApi from '../api/UserApi.ts'
+import {ref} from "vue"
 
-const username = ref("")
+const props = defineProps<{
+  time: number,
+}>()
+
+const emit = defineEmits([ "update:time" ]);
+
+const username = ref('')
+
+function cancel() {
+  username.value = ''
+  emit("update:time", 0)
+}
+
+async function addTime() {
+  await userApi.addTime({username: username.value, time: props.time})
+  cancel()
+}
 
 </script>
 
