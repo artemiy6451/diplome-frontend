@@ -1,13 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/views/HomePage.vue'
+import AdminPage from '@/views/AdminPage.vue'
+import UserPage from '@/views/UserPage.vue'
+import LoginPage from '@/views/LoginPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomePage,
+      path: '/admin',
+      name: 'AdminPanel',
+      component: AdminPage,
+    },
+    {
+      path: '/user',
+      name: 'UserPage',
+      component: UserPage,
+    },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: LoginPage,
     },
   ],
 })

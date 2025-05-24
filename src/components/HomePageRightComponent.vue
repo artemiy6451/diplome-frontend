@@ -12,11 +12,7 @@
           <el-button class="edit-button" size="small" @click="handleEdit(scope.$index, scope.row)">
             Edit
           </el-button>
-          <el-button
-            size="small"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)"
-          >
+          <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
             Delete
           </el-button>
         </template>
@@ -26,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import userApi from '../api/UserApi.ts'
 
 const users = ref([])
@@ -37,7 +33,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-
 .right {
   width: 60vh;
   padding-left: 35px;

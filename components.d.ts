@@ -10,8 +10,14 @@ declare module 'vue' {
   export interface GlobalComponents {
     CustomInput: typeof import('./src/components/UI/CustomInput.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElImput: typeof import('element-plus/es')['ElImput']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElStatistic: typeof import('element-plus/es')['ElStatistic']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElText: typeof import('element-plus/es')['ElText']
@@ -23,5 +29,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TotalTime: typeof import('./src/components/UI/TotalTime.vue')['default']
+    UserStatistic: typeof import('./src/components/UserStatistic.vue')['default']
   }
 }

@@ -1,30 +1,6 @@
+import type { IAllUsers, ICreateUser, IUserAddTime, IUserData, IUserTimeInfo } from "@/types";
 import { Api } from "./Api";
 
-interface IAllUsers {
-  data: {
-    id: number,
-    username: string,
-    time: number,
-    time_data: null
-  }
-}
-
-interface ICreateUser {
-  username: string,
-  password: string,
-}
-
-interface IUserData {
-  id: number,
-  username: string,
-  time: number,
-  time_data: null
-}
-
-interface IUserAddTime {
-  username: string,
-  time: number,
-}
 
 export class UserApi extends Api {
   constructor(baseUrl: string, options?: RequestInit) {
@@ -41,6 +17,9 @@ export class UserApi extends Api {
   }
   addTime(data: IUserAddTime): Promise<IUserData> {
     return this.request(`/user/change_time/${data.username}?time=${data.time}`, "POST")
+  }
+  getUserInfo(username: string): Promise<IUserTimeInfo> {
+    return this.request(`/user/get_user_info/${username}`, "GET")
   }
 }
 
